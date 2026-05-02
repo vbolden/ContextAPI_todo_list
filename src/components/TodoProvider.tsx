@@ -12,7 +12,7 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     const [tasks, setTasks] = useState<Task[]>([])
 
     // FUNCTION FOR ADDING TODO TASKS
-    function addTodo(text: string) {
+    function addTask(text: string) {
         const newTask = {
             id: crypto.randomUUID(),
             text: text,
@@ -23,7 +23,7 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     }
 
     // FUNCTION FOR TOGGLING COMPLETED TASKS
-    function toggleTodo(id: string) {
+    function toggleTask(id: string) {
         setTasks((prevTasks) =>
             prevTasks.map((task) =>
                 task.id === id
@@ -32,8 +32,13 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
         )
     }
 
+    // FUNCTION TO DELETE A TASK
+    function deleteTask(id: string) {
+        setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+    };
+
     return (
-        <TodoContext.Provider value={{ tasks, addTodo, toggleTodo }}>
+        <TodoContext.Provider value={{ tasks, addTask, toggleTask, deleteTask }}>
             {children}
         </TodoContext.Provider>
     )
