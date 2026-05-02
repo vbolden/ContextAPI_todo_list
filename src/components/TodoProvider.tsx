@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 
-function TodoProvider({children}) {
+type Task = {
+    id: string;
+    text: string;
+    completed: boolean;
+}
+
+function TodoProvider({children}: {children: React.ReactNode}) {
     // STORE MULTIPLE TODOS IN AN ARRAY
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState<Task[]>([])
 
     function addTodo(text: string) {
         const newTask = {
@@ -12,7 +18,14 @@ function TodoProvider({children}) {
             completed: false,
         }
 
-        
-        
+        setTasks((prevTasks) => [...prevTasks, newTask])
     }
+
+    return (
+        <TodoContext.Provider value={{tasks, addTodo}}>
+            {children}
+        </TodoContext.Provider>
+    )
 }
+
+export default TodoProvider;
