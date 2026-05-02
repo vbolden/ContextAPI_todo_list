@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const TodoContext = createContext(null); // ARG REQUIRED IN TSX 
+export const TodoContext = createContext<any>(null); // ARG REQUIRED IN TSX 
