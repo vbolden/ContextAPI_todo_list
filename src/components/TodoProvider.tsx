@@ -48,8 +48,17 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
         )
     }
 
+    // FUNCTION TO CLEAR COMPLETED TASKS
+    function clearCompleted() {
+        setTasks((prevTasks) =>
+            prevTasks.filter(
+                (task) => task.completed
+            )
+        )
+    }
+
     return (
-        <TodoContext.Provider value={{ tasks, addTask, toggleTask, deleteTask, editTask }}>
+        <TodoContext.Provider value={{ tasks, addTask, toggleTask, deleteTask, editTask, clearCompleted }}>
             {children}
         </TodoContext.Provider>
     )
