@@ -37,8 +37,19 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
         setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
     };
 
+    // FUNCTION TO EDIT TASK 
+    function editTask(id: string, newText: string) {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === id
+                    ? { ...task, text: newText }
+                    : task
+            )
+        )
+    }
+
     return (
-        <TodoContext.Provider value={{ tasks, addTask, toggleTask, deleteTask }}>
+        <TodoContext.Provider value={{ tasks, addTask, toggleTask, deleteTask, editTask }}>
             {children}
         </TodoContext.Provider>
     )
