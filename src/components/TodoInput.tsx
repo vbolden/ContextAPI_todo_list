@@ -9,4 +9,30 @@ function TodoInput() {
     if(!todoContext) return null;
 
     const addTodo = todoContext.addTodo;
+
+    function handleSubmit (e: React.SubmitEvent) {
+        e.preventDefault();
+
+        if(!text.trim()) return;
+
+        // ADD TODO FUNCTION CALL FROM TODOPROVIDER
+        addTodo(text);
+
+        // CLEAR INPUT AFTER SUBMIT
+        setText("");
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text"
+            value={text}
+            onChange={(e) => 
+                setText(e.target.value)
+            }
+            placeholder="Add todo" 
+            />
+
+            <button type="submit">Add Todo</button>
+        </form>
+    )
 }
