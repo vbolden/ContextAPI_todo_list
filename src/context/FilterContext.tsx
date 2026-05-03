@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-export const FilterContext = createContext<any>(null);
+export type Filter = "all" | "active" |"completed";
+
+export const FilterContext = createContext<any>("all");
