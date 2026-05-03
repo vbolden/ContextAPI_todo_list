@@ -36,3 +36,5 @@ function TodoInput() {
         </form>
     )
 }
+
+export default TodoInput;
