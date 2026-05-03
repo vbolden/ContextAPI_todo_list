@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 
-type Todo = {
+export type Todo = {
     id: string | number;
     text: string;
     completed: boolean;
