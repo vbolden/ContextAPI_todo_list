@@ -7,6 +7,9 @@ function FilterProvider({children}: {children: React.ReactNode}) {
     return (
         <FilterContext.Provider
         value={{filter, setFilter}}>
+            {children}
         </FilterContext.Provider>
     )
 }
+
+export default FilterProvider;
