@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 import type { Todo } from "../providers/TodoProvider";
+import { useState } from "react";
 
 function TodoItem({todo}: {todo: Todo}) {
     const todoContext = useContext(TodoContext);
@@ -9,9 +10,18 @@ function TodoItem({todo}: {todo: Todo}) {
 
     const toggleTodo = todoContext.toggleTodo;
     const deleteTodo = todoContext.deleteTodo;
+    const editTodo = todoContext.editTodo;
+
+    const [isEditing, setIsEditing] = useState(false);
 
     return (
         <div>
+            <input 
+            type="checkbox" 
+            checked={todo.completed}
+            onChange={() => 
+                toggleTodo(todo.id)
+            }/>
             <span
                 style={{
                     textDecoration:
@@ -22,12 +32,8 @@ function TodoItem({todo}: {todo: Todo}) {
                 {todo.text}
             </span>
 
-            <button
-                onClick={() =>
-                    toggleTodo(todo.id)
-                }
-            >
-                Complete
+            <button onClick={() => editTodo(todo.id)} >
+                Edit
             </button>
 
             <button
