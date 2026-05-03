@@ -22,50 +22,56 @@ function TodoItem({ todo }: { todo: Todo }) {
     }
 
     return (
-        <div>
-            <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() =>
-                    toggleTodo(todo.id)
-                } />
+        <div className="todo-item">
+            <div className="todo-left">
+                <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() =>
+                        toggleTodo(todo.id)
+                    } />
 
-            {isEditing ? (
-                <>
-                    <input
-                        type="text"
-                        value={newText}
-                        onChange={(e) =>
-                            setNewText(e.target.value)
-                        } />
+                {isEditing ? (
+                    <>
+                        <input
+                            type="text"
+                            value={newText}
+                            onChange={(e) =>
+                                setNewText(e.target.value)
+                            } />
 
-                    <button onClick={handleSave} >
-                        Save
-                    </button>
-                </>
-            ) : (
-                <>
-                    <span
-                        style={{
-                            textDecoration:
-                                todo.completed
-                                    ? "line-through"
-                                    : "none"
-                        }} >
-                        {todo.text}
-                    </span>
+                        <button
+                            onClick={handleSave} >
+                            Save
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <span
+                            style={{
+                                textDecoration:
+                                    todo.completed
+                                        ? "line-through"
+                                        : "none"
+                            }} >
+                            {todo.text}
+                        </span>
 
-                    <button
-                        onClick={() => setIsEditing(true)} >
-                        Edit
-                    </button>
-                </>
-            )}
-            <button
-                onClick={() =>
-                    deleteTodo(todo.id)} >
-                Delete
-            </button>
+                        <button
+                            onClick={() => setIsEditing(true)} >
+                            Edit
+                        </button>
+                    </>
+                )}
+            </div>
+            <div>
+                <button
+                    className="delete-button"
+                    onClick={() =>
+                        deleteTodo(todo.id)} >
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }
