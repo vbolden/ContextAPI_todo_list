@@ -8,6 +8,11 @@ function TodoList() {
 
     const filterContext = useContext(FilterContext);
 
+    if(!todoContext || !filterContext) return null;
+
+    const todos = todoContext.todos;
+    const filter = filterContext.filter;
+
     
 }
 
