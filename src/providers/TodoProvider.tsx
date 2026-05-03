@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 
-type Task = {
+type Todo = {
     id: string | number;
     text: string;
     completed: boolean;
@@ -9,56 +9,56 @@ type Task = {
 
 function TodoProvider({ children }: { children: React.ReactNode }) {
     // STORE MULTIPLE TODOS IN AN ARRAY
-    const [tasks, setTasks] = useState<Task[]>([])
+    const [todos, setTodos] = useState<Todo[]>([])
 
     // FUNCTION FOR ADDING TODO TASKS
-    function addTask(text: string) {
-        const newTask = {
+    function addTodo(text: string) {
+        const newTodo = {
             id: crypto.randomUUID(),
             text: text,
             completed: false,
         }
 
-        setTasks((prevTasks) => [...prevTasks, newTask])
+        setTodos((prevTodos) => [...prevTodos, newTodo])
     }
 
     // FUNCTION FOR TOGGLING COMPLETED TASKS
-    function toggleTask(id: string) {
-        setTasks((prevTasks) =>
-            prevTasks.map((task) =>
-                task.id === id
-                    ? { ...task, completed: !task.completed }
-                    : task)
+    function toggleTodo(id: string) {
+        setTodos((prevTodos) =>
+            prevTodos.map((todo) =>
+                todo.id === id
+                    ? { ...todo, completed: !todo.completed }
+                    : todo)
         )
     }
 
     // FUNCTION TO DELETE A TASK
-    function deleteTask(id: string) {
-        setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+    function deleteTodo(id: string) {
+        setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id))
     };
 
     // FUNCTION TO EDIT TASK 
-    function editTask(id: string, newText: string) {
-        setTasks((prevTasks) =>
-            prevTasks.map((task) =>
-                task.id === id
-                    ? { ...task, text: newText }
-                    : task
+    function editTodo(id: string, newText: string) {
+        setTodos((prevTodos) =>
+            prevTodos.map((todo) =>
+                todo.id === id
+                    ? { ...todo, text: newText }
+                    : todo
             )
         )
     }
 
     // FUNCTION TO CLEAR COMPLETED TASKS
     function clearCompleted() {
-        setTasks((prevTasks) =>
-            prevTasks.filter(
-                (task) => task.completed
+        setTodos((prevTodos) =>
+            prevTodos.filter(
+                (todo) => todo.completed
             )
         )
     }
 
     return (
-        <TodoContext.Provider value={{ tasks, addTask, toggleTask, deleteTask, editTask, clearCompleted }}>
+        <TodoContext.Provider value={{ todos, addTodo, toggleTodo, deleteTodo, editTodo, clearCompleted }}>
             {children}
         </TodoContext.Provider>
     )
