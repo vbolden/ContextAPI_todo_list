@@ -42,3 +42,25 @@ button {
 button:hover {
     opacity: 0.85;
 }
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+}
+
+.todo-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-button {
+    margin-left: 10px;
+}
