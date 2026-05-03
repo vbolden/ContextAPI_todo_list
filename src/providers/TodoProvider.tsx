@@ -52,7 +52,7 @@ function TodoProvider({ children }: { children: React.ReactNode }) {
     function clearCompleted() {
         setTodos((prevTodos) =>
             prevTodos.filter(
-                (todo) => todo.completed
+                (todo) => !todo.completed
             )
         )
     }
