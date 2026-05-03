@@ -4,7 +4,6 @@ import { FilterContext } from "../context/FilterContext";
 function FilterButtons() {
     const filterContext = useContext(FilterContext);
 
-    const filter = filterContext.filter;
     const setFilter = filterContext.setFilter;
 
     return (
@@ -14,7 +13,6 @@ function FilterButtons() {
                 <button onClick={setFilter("active")} >Active</button>
                 <button onClick={setFilter("completed")} >Completed</button>
             </div>
-            <p>Current filter: {filter}</p>
         </div>
     )
 }
