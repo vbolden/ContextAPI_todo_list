@@ -10,10 +10,15 @@ function App() {
 
   if(!themeContext) return null;
 
+  const theme = themeContext.theme;
+
+
   return (
-    <>
-      
-    </>
+    <div>
+      <h1>Todo App</h1>
+      <TodoInput />
+      <TodoList />
+    </div>
   )
 }
 
