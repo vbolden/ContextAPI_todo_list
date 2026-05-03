@@ -14,6 +14,10 @@ function TodoList() {
     const todos = todoContext.todos;
     const filter = filterContext.filter;
 
+    // CONSOLE LOGS FOR DEBUGGING
+    // console.log(todos);
+    // console.log(filter);
+
     const filteredTodos = todos.filter((todo: Todo) => {
         if (filter === "active") {
             return !todo.completed;
