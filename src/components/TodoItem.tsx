@@ -3,7 +3,7 @@ import { TodoContext } from "../context/TodoContext";
 import type { Todo } from "../providers/TodoProvider";
 import { useState } from "react";
 
-function TodoItem({todo}: {todo: Todo}) {
+function TodoItem({ todo }: { todo: Todo }) {
     const todoContext = useContext(TodoContext);
 
     if (!todoContext) return null;
@@ -16,33 +16,54 @@ function TodoItem({todo}: {todo: Todo}) {
 
     const [newText, setNewText] = useState(todo.text);
 
+    function handleSave() {
+        editTodo(todo.id, newText);
+        setIsEditing(false);
+    }
+
     return (
         <div>
-            <input 
-            type="checkbox" 
-            checked={todo.completed}
-            onChange={() => 
-                toggleTodo(todo.id)
-            }/>
-            <span
-                style={{
-                    textDecoration:
-                        todo.completed
-                            ? "line-through"
-                            : "none"
-                }} >
-                {todo.text}
-            </span>
+            <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() =>
+                    toggleTodo(todo.id)
+                } />
 
-            <button onClick={() => editTodo(todo.id)} >
-                Edit
-            </button>
+            {isEditing ? (
+                <>
+                    <input
+                        type="text"
+                        value={newText}
+                        onChange={(e) =>
+                            setNewText(e.target.value)
+                        } />
 
+                    <button onClick={handleSave} >
+                        Save
+                    </button>
+                </>
+            ) : (
+                <>
+                    <span
+                        style={{
+                            textDecoration:
+                                todo.completed
+                                    ? "line-through"
+                                    : "none"
+                        }} >
+                        {todo.text}
+                    </span>
+
+                    <button
+                        onClick={() => setIsEditing(true)} >
+                        Edit
+                    </button>
+                </>
+            )}
             <button
                 onClick={() =>
-                    deleteTodo(todo.id)
-                }
-            >
+                    deleteTodo(todo.id)} >
                 Delete
             </button>
         </div>
