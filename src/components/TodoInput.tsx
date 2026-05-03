@@ -10,7 +10,7 @@ function TodoInput() {
 
     const addTodo = todoContext.addTodo;
 
-    function handleSubmit (e: React.SubmitEvent) {
+    function handleSubmit (e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if(!text.trim()) return;
