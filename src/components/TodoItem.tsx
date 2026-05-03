@@ -14,6 +14,8 @@ function TodoItem({todo}: {todo: Todo}) {
 
     const [isEditing, setIsEditing] = useState(false);
 
+    const [newText, setNewText] = useState(todo.text);
+
     return (
         <div>
             <input 
