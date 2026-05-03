@@ -8,6 +8,12 @@ import ThemeProvider from './providers/ThemeProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <FilterProvider>
+        <TodoProvider>
+          <App />
+        </TodoProvider>
+      </FilterProvider>
+    </ThemeProvider>
   </StrictMode>,
 )
