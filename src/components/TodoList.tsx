@@ -4,7 +4,11 @@ import { FilterContext } from "../context/FilterContext";
 import TodoItem from "./TodoItem";
 
 function TodoList() {
+    const todoContext = useContext(TodoContext);
 
+    const filterContext = useContext(FilterContext);
+
+    
 }
 
 export default TodoList;
