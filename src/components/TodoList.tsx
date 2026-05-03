@@ -13,6 +13,7 @@ function TodoList() {
 
     const todos = todoContext.todos;
     const filter = filterContext.filter;
+    const clearCompleted = todoContext.clearCompleted;
 
     // CONSOLE LOGS FOR DEBUGGING
     // console.log(todos);
@@ -29,6 +30,12 @@ function TodoList() {
         return true;
     });
 
+    // TRIGGER FOR DELETE COMPLETED TASKS BUTTON
+    const hasCompletedTodos = 
+    todos.some(
+        (todo: Todo) => todo.completed
+    )
+
     return (
         <div>
             {filteredTodos.map((todo: Todo) => (
@@ -37,6 +44,12 @@ function TodoList() {
                     todo={todo}
                 />
             ))}
+
+            {hasCompletedTodos && (
+                <button onClick={clearCompleted} >
+                    Delete Completed
+                </button>
+            )}
         </div>
     )
 }
