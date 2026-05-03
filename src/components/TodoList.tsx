@@ -9,21 +9,32 @@ function TodoList() {
 
     const filterContext = useContext(FilterContext);
 
-    if(!todoContext || !filterContext) return null;
+    if (!todoContext || !filterContext) return null;
 
     const todos = todoContext.todos;
     const filter = filterContext.filter;
 
     const filteredTodos = todos.filter((todo: Todo) => {
-            if(filter === "active") {
-                return !todo.completed;
-            } 
-            
-            if(filter === "completed") {
-                return todo.completed;
-            }
-            return true;
-        });
+        if (filter === "active") {
+            return !todo.completed;
+        }
+
+        if (filter === "completed") {
+            return todo.completed;
+        }
+        return true;
+    });
+
+    return (
+        <div>
+            {filteredTodos.map((todo: Todo) => (
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                />
+            ))}
+        </div>
+    )
 }
 
 export default TodoList;
