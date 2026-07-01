@@ -16,18 +16,7 @@ function App() {
 
 
   return (
-    <div className='container'
-      style={{
-        backgroundColor:
-          theme === "light"
-            ? "white"
-            : "#222",
-
-        color:
-          theme === "light"
-            ? "black"
-            : "white",
-      }}
+    <div className={`container ${theme}`}
     >
       <h1>Todo App</h1>
       <ThemeButton />
