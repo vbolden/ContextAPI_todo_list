@@ -37,7 +37,7 @@ function TodoList() {
     )
 
     return (
-        <div>
+        <div className="todo-list">
             {filteredTodos.map((todo: Todo) => (
                 <TodoItem
                     key={todo.id}
@@ -46,7 +46,7 @@ function TodoList() {
             ))}
 
             {hasCompletedTodos && (
-                <button onClick={clearCompleted} >
+                <button className="control-btn" onClick={clearCompleted} >
                     Delete Completed
                 </button>
             )}
