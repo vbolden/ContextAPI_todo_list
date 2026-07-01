@@ -3,7 +3,7 @@ import { TodoContext } from "../context/TodoContext";
 import type { Todo } from "../providers/TodoProvider";
 import { useState } from "react";
 
-function TodoItem({ todo }: { todo: Todo }) {
+function TodoItem({ todo }: { todo: Todo; }) {
     const todoContext = useContext(TodoContext);
 
     if (!todoContext) return null;
@@ -41,6 +41,7 @@ function TodoItem({ todo }: { todo: Todo }) {
                             } />
 
                         <button
+                            className="control-btn"
                             onClick={handleSave} >
                             Save
                         </button>
@@ -57,14 +58,17 @@ function TodoItem({ todo }: { todo: Todo }) {
                             {todo.text}
                         </span>
 
-                        <button
-                            onClick={() => setIsEditing(true)} >
-                            Edit
-                        </button>
+
                     </>
                 )}
             </div>
             <div>
+                <button
+                    className="control-btn"
+                    onClick={() => setIsEditing(true)}
+                    disabled={todo.completed} >
+                    Edit
+                </button>
                 <button
                     className="delete-button"
                     onClick={() =>
@@ -73,7 +77,7 @@ function TodoItem({ todo }: { todo: Todo }) {
                 </button>
             </div>
         </div>
-    )
+    );
 }
 
 export default TodoItem;
