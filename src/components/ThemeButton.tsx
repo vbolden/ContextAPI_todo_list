@@ -7,7 +7,7 @@ function ThemeButton() {
     const toggleTheme = themeContext.toggleTheme;
 
     return (
-        <button onClick={toggleTheme} >
+        <button className="control-btn" onClick={toggleTheme} >
             Toggle Theme
         </button>
     )
