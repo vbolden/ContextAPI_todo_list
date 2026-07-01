@@ -66,7 +66,13 @@ src/
 
 ## Screenshots
 
+### Light Mode
 
+![Todo App Light Mode](./src/assets/lightmode.png)
+
+### Dark Mode
+
+![Todo App Dark Mode](./src/assets/darkmode.png)
 
 ## License
 This project is for learning and portfolio purposes.
