@@ -40,23 +40,29 @@ npm run dev
 http://localhost:5173
 
 ## Project Structure
+
+```text
 src/
+│
 ├── components/
-│   ├── TodoInput
-│   ├── TodoItem
-│   ├── TodoList
-│   ├── FilterButtons
-│   └── ThemeButton
+│   ├── TodoInput.tsx
+│   ├── TodoItem.tsx
+│   ├── TodoList.tsx
+│   ├── FilterButtons.tsx
+│   └── ThemeButton.tsx
 │
 ├── context/
-│   ├── TodoContext
-│   ├── FilterContext
-│   └── ThemeContext
+│   ├── TodoContext.ts
+│   ├── FilterContext.ts
+│   └── ThemeContext.ts
 │
 ├── providers/
-│   └── TodoProvider
+│   └── TodoProvider.tsx
 │
-└── App.tsx
+├── App.tsx
+├── App.css
+└── main.tsx
+```
 
 ## Screenshots
 
